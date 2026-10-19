@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 4th Anniversary | Puchu & Misti ❤️</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Music (Your Provided Audio File) -->
+    <audio id="bg-music" src="song.mp3" loop preload="auto"></audio>
+
+    <!-- Welcome Gate Overlay (Required so Mobile Browser allows Audio Play on Tap) -->
+    <div id="welcome-screen">
+        <div class="welcome-card">
+            <div class="pulsing-rose">🌹</div>
+            <h2>Puchu & Misti</h2>
+            <p class="subtitle">20 October 2022 — 20 October 2026</p>
+            <p class="desc">4 Years of Friendship, Love & Forever</p>
+            <button id="start-btn">Tap to Open Surprise, Sona ❤️🎵</button>
+        </div>
+    </div>
+
+    <!-- Falling Rose Petals Canvas -->
+    <canvas id="rose-canvas"></canvas>
+
+    <!-- Floating Play/Pause Music Button -->
+    <button id="music-toggle" class="music-btn" title="Play/Pause Music">
+        🎵 <span id="music-status">Playing</span>
+    </button>
+
+    <!-- Main Website Content -->
+    <div class="container">
+
+        <!-- HERO SECTION -->
+        <header class="hero-section">
+            <div class="badge">✨ Happy 4th Anniversary ✨</div>
+            <h1 class="couple-name">PUCHU <span>&</span> MISTI</h1>
+            <p class="hero-tagline">My Best Friend • My Girlfriend • My Future Wife</p>
+            <div class="glowing-line"></div>
+
+            <!-- Live Relationship Timer -->
+            <div class="timer-wrapper">
+                <p class="timer-heading">Together Since 20 October 2022 ❤️</p>
+                <div class="timer-grid">
+                    <div class="time-box">
+                        <span id="days">0000</span>
+                        <small>Days</small>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <small>Hours</small>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <small>Minutes</small>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <small>Seconds</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- STORY TIMELINE SECTION -->
+        <section class="section">
+            <h2 class="section-title">🌹 Our 4 Years Journey 🌹</h2>
+            <div class="glowing-line"></div>
+
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="date-tag">20 October 2022</span>
+                        <h3>The Cute Beginning ❤️</h3>
+                        <p>Akta moja r modha dea amdar ai relationship ta suru hoachilo 20 october 2022❤️</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="date-tag">Best Friends Forever</span>
+                        <h3>Unbreakable Bond 🤝</h3>
+                        <p>Amon kono kotha nai aj porjnto jata amra dujon dujon ka bolta pari na</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="date-tag">Golden School Days</span>
+                        <h3>Class 11 & 12 Memories ✨</h3>
+                        <p>Amdar class 11 and 12 a katano sai days gulo kono dino vulta parbo na</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="date-tag">My Future Wife</span>
+                        <h3>Until My Last Breath 😌💙🖤</h3>
+                        <p>Ami chi tomar satha life r ses minutes ta porjnto jano katata pari😌💙🖤😌</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHOTO GALLERY SECTION (6 Photos) -->
+        <section class="section">
+            <h2 class="section-title">📸 Our Precious Memories 📸</h2>
+            <p class="section-sub">Tap on any photo to view full screen</p>
+            <div class="glowing-line"></div>
+
+            <div class="gallery-grid">
+                <!-- Photo 1 -->
+                <div class="photo-card reveal" onclick="openLightbox('photo1.jpg', 'Divine Blessings Together ❤️')">
+                    <img src="photo1.jpg" alt="Memory 1">
+                    <div class="photo-caption">Divine Blessings Together ❤️</div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="photo-card reveal" onclick="openLightbox('photo2.jpg', 'Every Journey With You Is Special ✨')">
+                    <img src="photo2.jpg" alt="Memory 2">
+                    <div class="photo-caption">Every Journey With You Is Special ✨</div>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="photo-card reveal" onclick="openLightbox('photo3.jpg', 'Side By Side Always 💑')">
+                    <img src="photo3.jpg" alt="Memory 3">
+                    <div class="photo-caption">Side By Side Always 💑</div>
+                </div>
+
+                <!-- Photo 4 -->
+                <div class="photo-card reveal" onclick="openLightbox('photo4.jpg', 'My Peace & Happiness 😌💙')">
+                    <img src="photo4.jpg" alt="Memory 4">
+                    <div class="photo-caption">My Peace & Happiness 😌💙</div>
+                </div>
+
+                <!-- Photo 5 -->
+                <div class="photo-card reveal" onclick="openLightbox('photo5.jpg', 'The Rose of Love (08.12.2023) 🌹')">
+                    <img src="photo5.jpg" alt="Memory 5">
+                    <div class="photo-caption">The Rose of Love (08.12.2023) 🌹</div>
+                </div>
+
+                <!-- Photo 6 -->
+                <div class="photo-card reveal" onclick="openLightbox('photo6.jpg', 'Puchu & Misti Forever 🖤💙')">
+                    <img src="photo6.jpg" alt="Memory 6">
+                    <div class="photo-caption">Puchu & Misti Forever 🖤💙</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPECIAL LOVE LETTER SECTION -->
+        <section class="section">
+            <h2 class="section-title">💌 A Letter For My Sona 💌</h2>
+            <div class="glowing-line"></div>
+
+            <div class="envelope-wrapper reveal">
+                <button id="open-letter-btn" class="letter-btn">Tap to Read My Heart, Sona 🌹</button>
+
+                <div id="letter-card" class="letter-card">
+                    <div class="letter-border">
+                        <h3>Sona,</h3>
+                        <p>Aj holo sai day ja din ami tomka amar life a payachilom😌</p>
+                        <p>Ata hoi to amar vagya chilo ,nahola tomar moto ato valo,ato sorol, ato sundor mya ami deserve kori na😁</p>
+                        <p>Tomi amka amar maa r thakau basi agla rakho,amka valobaso,amar sorir r jotno nau🥹</p>
+                        <p>Ami chi tomi jani life r ses muhorto porjnto amka ai vaba valobas jau 😌💙🖤😌</p>
+                        <div class="letter-sign">
+                            Forever Yours,<br>
+                            <span>Tomar Puchu ❤️</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="glowing-line"></div>
+            <p>Happy 4th Anniversary, Misti! 🌹</p>
+            <small>20.10.2022 — Forever & Always 💙🖤</small>
+        </footer>
+
+    </div>
+
+    <!-- Lightbox Modal for Fullscreen Photo -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" src="" alt="Full View">
+        <p id="lightbox-caption"></p>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

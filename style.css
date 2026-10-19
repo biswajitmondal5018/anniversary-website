@@ -1,0 +1,494 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: radial-gradient(circle at top, #2b030c 0%, #120105 60%, #070002 100%);
+    color: #fff0f3;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Falling Rose Canvas */
+#rose-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Welcome Screen Overlay */
+#welcome-screen {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, #380410 0%, #0a0003 100%);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#welcome-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.welcome-card {
+    background: rgba(255, 20, 80, 0.08);
+    border: 2px solid #ff2a6d;
+    box-shadow: 0 0 30px rgba(255, 42, 109, 0.5), inset 0 0 20px rgba(255, 0, 55, 0.2);
+    border-radius: 24px;
+    padding: 35px 25px;
+    text-align: center;
+    max-width: 380px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+}
+
+.pulsing-rose {
+    font-size: 3.8rem;
+    animation: pulse 1.6s infinite ease-in-out;
+}
+
+.welcome-card h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #ff4d79;
+    text-shadow: 0 0 12px #ff0044;
+    margin: 10px 0 5px;
+}
+
+.welcome-card .subtitle {
+    font-size: 0.9rem;
+    color: #ffb3c6;
+    letter-spacing: 1px;
+}
+
+.welcome-card .desc {
+    font-size: 0.85rem;
+    color: #ffccd5;
+    margin: 12px 0 24px;
+}
+
+#start-btn {
+    background: linear-gradient(45deg, #d90429, #ff2a6d, #ff758f);
+    color: #fff;
+    border: none;
+    padding: 14px 26px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 42, 109, 0.8);
+    animation: pulseBtn 1.8s infinite;
+    width: 100%;
+}
+
+/* Floating Music Button */
+.music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: linear-gradient(135deg, #c9184a, #ff4d6d);
+    color: white;
+    border: 1.5px solid #ffb3c6;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 77, 109, 0.8);
+}
+
+/* Main Container */
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 25px 16px 70px;
+}
+
+/* Animated Glowing Red & Pink Line */
+.glowing-line {
+    height: 3px;
+    width: 85%;
+    margin: 16px auto 28px;
+    background: linear-gradient(90deg, transparent, #ff0033, #ff66a3, #ff0033, transparent);
+    background-size: 200% 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 12px #ff1a53, 0 0 24px #ff66a3;
+    animation: lineFlow 3s linear infinite;
+}
+
+@keyframes lineFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 30px 10px 15px;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(255, 0, 68, 0.2);
+    border: 1px solid #ff4d79;
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    color: #ffb3c6;
+    box-shadow: 0 0 12px rgba(255, 77, 121, 0.4);
+    margin-bottom: 14px;
+}
+
+.couple-name {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px #ff0044, 0 0 25px #ff2a6d;
+    letter-spacing: 2px;
+}
+
+.couple-name span {
+    color: #ff4d79;
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+}
+
+.hero-tagline {
+    font-size: 0.92rem;
+    color: #ffccd5;
+    margin-top: 8px;
+}
+
+/* Timer Grid */
+.timer-wrapper {
+    background: rgba(40, 2, 14, 0.75);
+    border: 1.5px solid rgba(255, 77, 121, 0.6);
+    border-radius: 20px;
+    padding: 18px 12px;
+    box-shadow: 0 0 25px rgba(255, 0, 68, 0.3);
+}
+
+.timer-heading {
+    font-size: 0.85rem;
+    color: #ffb3c6;
+    margin-bottom: 12px;
+}
+
+.timer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.time-box {
+    background: rgba(255, 26, 83, 0.14);
+    border: 1px solid rgba(255, 102, 163, 0.5);
+    border-radius: 12px;
+    padding: 10px 4px;
+}
+
+.time-box span {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ff4d79;
+    text-shadow: 0 0 8px rgba(255, 77, 121, 0.7);
+}
+
+.time-box small {
+    font-size: 0.7rem;
+    color: #ffe5ec;
+}
+
+/* Section Styling */
+.section {
+    margin-top: 45px;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.3rem;
+    color: #ff758f;
+    text-shadow: 0 0 12px rgba(255, 0, 68, 0.6);
+    font-weight: 400;
+}
+
+.section-sub {
+    font-size: 0.78rem;
+    color: #ffb3c6;
+    margin-top: 4px;
+}
+
+/* Timeline with Glowing Red-Pink Vertical Line */
+.timeline {
+    position: relative;
+    padding-left: 28px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #ff0044, #ff80b3, #ff0044);
+    box-shadow: 0 0 12px #ff0044;
+    border-radius: 4px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -26px;
+    top: 18px;
+    width: 15px;
+    height: 15px;
+    background: #ff0044;
+    border: 3px solid #ffb3c6;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #ff0044;
+}
+
+.timeline-content {
+    background: rgba(50, 4, 18, 0.75);
+    border: 1.5px solid rgba(255, 77, 121, 0.55);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 0, 68, 0.18);
+}
+
+.date-tag {
+    display: inline-block;
+    background: linear-gradient(90deg, #c9184a, #ff4d6d);
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.timeline-content h3 {
+    font-size: 1.05rem;
+    color: #ffb3c6;
+    margin-bottom: 6px;
+}
+
+.timeline-content p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #fff0f3;
+}
+
+/* Photo Gallery (6 Images) */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+@media (max-width: 380px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.photo-card {
+    background: rgba(45, 3, 16, 0.85);
+    border: 2px solid #ff4d79;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 18px rgba(255, 26, 83, 0.35);
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.photo-card:hover, .photo-card:active {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 0 25px rgba(255, 77, 121, 0.8);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-caption {
+    padding: 10px 8px;
+    font-size: 0.78rem;
+    color: #ffe5ec;
+    background: linear-gradient(180deg, rgba(30,0,10,0.9), rgba(65,4,22,0.95));
+    border-top: 1px solid rgba(255, 77, 121, 0.4);
+}
+
+/* Love Letter Section */
+.letter-btn {
+    background: linear-gradient(45deg, #c9184a, #ff4d6d, #ff758f);
+    color: white;
+    border: 2px solid #ffb3c6;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 22px rgba(255, 77, 109, 0.75);
+    animation: pulseBtn 2s infinite;
+}
+
+.letter-card {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.9s ease, opacity 0.8s ease, margin-top 0.5s ease;
+}
+
+.letter-card.open {
+    max-height: 900px;
+    opacity: 1;
+    margin-top: 22px;
+}
+
+.letter-border {
+    background: linear-gradient(145deg, #2b030e, #160107);
+    border: 2px solid #ff4d79;
+    border-radius: 20px;
+    padding: 24px 20px;
+    text-align: left;
+    box-shadow: 0 0 30px rgba(255, 0, 68, 0.45), inset 0 0 18px rgba(255, 77, 121, 0.2);
+}
+
+.letter-border h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.2rem;
+    color: #ff758f;
+    margin-bottom: 12px;
+}
+
+.letter-border p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #fff0f3;
+    margin-bottom: 12px;
+}
+
+.letter-sign {
+    text-align: right;
+    margin-top: 18px;
+    font-size: 0.9rem;
+    color: #ffb3c6;
+}
+
+.letter-sign span {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: #ff4d79;
+}
+
+/* Lightbox Fullscreen Modal */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 0, 3, 0.94);
+    z-index: 99999;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 95%;
+    max-height: 78vh;
+    border: 2px solid #ff4d79;
+    border-radius: 16px;
+    box-shadow: 0 0 30px rgba(255, 42, 109, 0.7);
+}
+
+#lightbox-caption {
+    margin-top: 14px;
+    color: #ffb3c6;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 2.4rem;
+    color: #ff4d79;
+    cursor: pointer;
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: all 0.7s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Touch Heart Burst */
+.touch-heart {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.3rem;
+    z-index: 999;
+    animation: floatUp 1s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-55px) scale(1.5); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+@keyframes pulseBtn {
+    0%, 100% { box-shadow: 0 0 15px rgba(255, 42, 109, 0.7); }
+    50% { box-shadow: 0 0 28px rgba(255, 117, 143, 1); }
+}
+
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    color: #ffb3c6;
+    font-size: 0.9rem;
+}
